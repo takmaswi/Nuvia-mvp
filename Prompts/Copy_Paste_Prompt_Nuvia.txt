@@ -1,0 +1,250 @@
+# COPY-PASTE PROMPT FOR CLAUDE OPUS 4
+## Ready-to-Use, Customize and Send
+
+---
+
+## INSTRUCTIONS
+
+1. **Replace all [PLACEHOLDERS] with your actual information**
+2. **Copy everything below the line (keep the line break)**
+3. **Go to https://claude.ai**
+4. **Paste into chat and add: "BUILD THE WEBSITE NOW"**
+5. **Wait 5 minutes for Claude to generate HTML**
+
+---
+
+## ════════════════════════════════════════════════════════════════════════════
+
+YOU ARE A WORLD-CLASS WEB DEVELOPER.
+
+BUILD A SINGLE-FILE HTML WEBSITE FOR NUVIA PROPERTIES & DEVELOPMENTS.
+
+**KEY REQUIREMENTS:**
+- Single HTML file with embedded CSS + JavaScript
+- Text-heavy, minimal images (0-1 CEO photo max)
+- GSAP scroll animations (letter reveals, parallax text, card reveals)
+- Glassmorphism UI effects
+- Colors: White, Navy (#1a3a52), Gold (#d4af37), Charcoal (#2a2a2a)
+- Fonts: Playfair Display (headings), Inter (body)
+- 4 pages with smooth scroll navigation
+- Mobile-responsive, <2s load time, 60fps animations
+- Accessibility compliant
+
+**PAGE STRUCTURE:**
+
+**PAGE 1 - OUR STORY**
+- Hero: Navy background or white, centered text
+- Main heading: "The Diaspora Deserves Better."
+- Subheading: "Professional property solutions built on transparency, integrity, and results."
+- Animation: Letters appear one-by-one on page load (0.1s per letter, 0.05s stagger)
+- Story section: Two-column (desktop), single-column (mobile)
+- Founder narrative (FOUNDER STORY TEXT BELOW)
+- Sticky "Learn More" button (gold, bottom-right)
+
+**PAGE 2 - WHAT WE DO**
+- Header: "Our Services" + "Three core pillars built on trust and transparency."
+- 3 service cards with glassmorphism effect:
+  * Card 1: Diaspora Development + icon + description + features + "Learn More" button
+  * Card 2: Student Housing + icon + description + features + "Learn More" button
+  * Card 3: Property Management + icon + description + features + "Learn More" button
+- Cards arranged in 3 columns (desktop), 1 column (mobile)
+- Animations: Cards scale-up + rotate icons on scroll (0.7s, stagger 0.15s)
+- Hover effects: Cards lift, glow, border color changes to gold
+
+**PAGE 3 - WHY NUVIA?**
+- Text transformation: "We don't just build houses... we build TRUST"
+- Key words (TRUST, FUTURES, THEM) in gold with glow effect
+- 6 reasons why section with rotating icons:
+  * Reason 1: Transparent Communication
+  * Reason 2: Female-Led Innovation
+  * Reason 3: Time-Bound Projects
+  * Reason 4: One-Stop Solution
+  * Reason 5: Genuine Accountability
+  * Reason 6: Family-First Approach
+- Full-width navy mission block with white text
+
+**PAGE 4 - LET'S BUILD TOGETHER**
+- Hero: "Ready to Build Your Story?"
+- Subheading: "Let's talk about your vision. We'll handle the rest."
+- 3 contact cards:
+  * Call us: +[PHONE], "TAP TO CALL" button
+  * Email us: [EMAIL], "SEND EMAIL" button
+  * Message us: WhatsApp, "OPEN CHAT" button
+- Footer with copyright, links
+
+**STICKY HEADER (ALL PAGES):**
+- Logo "Nuvia" (left, navy, Playfair 24px)
+- Nav links: Home | Services | Why Nuvia | Contact
+- "Get Started" button (right, gold)
+- Hamburger menu on mobile
+- Links smooth scroll to sections
+
+---
+
+## CONTENT TO USE
+
+### COMPANY DETAILS
+**Company Name:** Nuvia Properties & Developments  
+**Location:** Harare, Zimbabwe  
+**CEO/Founder:** [FOUNDER NAME]  
+**Email:** [CONTACT_EMAIL]  
+**Phone:** [CONTACT_PHONE]  
+**WhatsApp:** [WHATSAPP_LINK]
+
+### FOUNDER STORY (Replace with actual story)
+[FOUNDER STORY - 2-3 SENTENCES]
+
+Example if not provided:
+"As a first-born daughter raised between Zimbabwe and diaspora, I understand the pressure of wanting to build back home. I created Nuvia to be the trustworthy bridge between diaspora dreams and African reality. This company exists because I know what it feels like to need someone you can trust with your vision."
+
+### SERVICE DETAILS
+
+**Service 1: Diaspora Development**
+- Description: "Build your dream property from anywhere with professional support, transparent costing, and weekly photo updates."
+- Includes: Land advisory, design planning, transparent costs, weekly updates, contract management, completion guarantee
+- Icon: 🏠 or 🌍
+
+**Service 2: Student Housing**
+- Description: "Safe, stylish, modern accommodations designed for students to thrive academically and socially."
+- Includes: Modern facilities, safety systems, community spaces, fair pricing, professional management, student amenities
+- Icon: 🎓 or 🏢
+
+**Service 3: Property Management**
+- Description: "Professional lettings, tenant vetting, rent collection, and maintenance coordination. Full portfolio management."
+- Includes: Tenant sourcing, vetting, lease management, rent collection, maintenance, inspections, monthly reporting
+- Icon: 🔑 or 📋
+
+### SIX REASONS WHY (Use these or customize)
+
+1. **Transparent Communication** - Real-time updates, honest reporting, documented processes
+2. **Female-Led Innovation** - Young CEO bringing fresh perspective to traditional industry
+3. **Time-Bound Projects** - Structured timelines, professional contracts, on-schedule delivery
+4. **One-Stop Solution** - Diaspora dev + student housing + property management together
+5. **Genuine Accountability** - We treat every project like we own it ourselves
+6. **Family-First Approach** - Your vision is your legacy; we protect it with excellence
+
+### MISSION STATEMENT (Replace with actual)
+[MISSION_STATEMENT]
+
+Example if not provided:
+"At Nuvia, we don't just build properties. We build trust. We build futures. We build stories that last. This is why families choose us."
+
+---
+
+## DESIGN SPECIFICATIONS
+
+**Color Palette (REQUIRED):**
+```
+White:      #ffffff
+Navy:       #1a3a52 (headings, authority)
+Gold:       #d4af37 (buttons, hovers)
+Charcoal:   #2a2a2a (text)
+Cream:      #f5f5f0 (background variation)
+Gray:       #e8e8e8 (borders)
+```
+
+**Typography:**
+- Headings: Playfair Display (Google Fonts), 32-60px, bold
+- Subheadings: Inter (Google Fonts), 18-24px, medium
+- Body: Inter (Google Fonts), 16px, regular
+
+**Layout:**
+- Single container, centered, max-width 1200px
+- Padding: 40px desktop, 20px mobile
+- Whitespace: 40%+ of page (luxury signal)
+- Section gaps: 80-120px
+- Mobile breakpoint: 768px
+
+**Animations (GSAP + ScrollTrigger):**
+1. Hero heading: Letters appear one-by-one (0.1s each, 0.05s stagger) on page load
+2. Story text: Parallax text from sides on scroll (0.8s, scrub 1)
+3. Service cards: Scale up + rotate icons on scroll (0.7s, stagger 0.15s)
+4. Key words: Color transform to gold with glow on scroll
+5. Reason icons: 360° rotation + fade on scroll (0.8s, stagger 0.15s)
+6. Contact cards: Fade + translate up on scroll (0.6s, stagger 0.1s)
+
+**UI Effects:**
+- Glassmorphism cards: backdrop-filter blur(10px), semi-transparent white, gold border on hover
+- Hover effects: All cards lift (translateY -8px), glow with gold shadow
+- Buttons: Gold background, white text, scale 1.05 on hover
+- Smooth transitions: All interactions 0.3s ease
+
+**Mobile Optimization:**
+- Single column layout
+- Hamburger menu for navigation
+- Buttons: 48px minimum touch target
+- Reduced animations (faster stagger, shorter duration)
+- Font sizes: 16px minimum (prevents auto-zoom)
+
+**Performance Targets:**
+- Load time: <2 seconds
+- Animations: 60fps smooth
+- File size: ~700-900 lines
+- Only GPU-accelerated properties (transform, opacity)
+
+---
+
+## CRITICAL IMPLEMENTATION NOTES
+
+✓ **Minimal Images:** Use emoji/SVG icons only (📞 ✉️ 💬 🏠 🎓 🔑 etc). Optionally add CEO photo as small circle (200x200px max) in hero. NO property photos.
+
+✓ **Text-Heavy Design:** Typography and whitespace are the visual elements. Large, bold headings guide attention.
+
+✓ **Glassmorphism:** Service cards use `backdrop-filter: blur(10px)` with semi-transparent white + gold border
+
+✓ **GSAP Library:** Load from CDN (https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/)
+
+✓ **Fonts:** Load from Google Fonts (Playfair Display, Inter)
+
+✓ **Smooth Scroll:** All navigation links use GSAP smooth scroll (1s duration)
+
+✓ **Sticky Header:** Fixed position, z-index 1000, white background, navy text, gold hover
+
+✓ **Accessibility:** Color contrast 4.5:1, keyboard navigation, focus indicators, respects prefers-reduced-motion
+
+---
+
+## VALIDATION CHECKLIST
+
+When Claude provides the HTML, verify:
+☐ All 4 pages render correctly
+☐ Navigation smooth scrolls between sections
+☐ Animations smooth (no jank)
+☐ Mobile responsive (test at 375px, 768px, 1200px)
+☐ Load time <2 seconds
+☐ No console errors
+☐ Contact buttons functional (tel:, mailto:, WhatsApp links)
+☐ Hamburger menu works on mobile
+☐ Hover effects work on buttons/cards
+☐ All text readable (color contrast sufficient)
+
+---
+
+## DEPLOYMENT
+
+After Claude provides HTML:
+1. Save as `index.html`
+2. Open in browser locally to test
+3. Upload to Netlify (free, drag-drop)
+4. Or use Vercel, GitHub Pages, any host
+5. Share the live URL
+
+That's it! No build process needed.
+
+---
+
+## READY TO BUILD
+
+Replace all [BRACKETS] above with your actual content.
+
+Copy everything from "YOU ARE A WORLD-CLASS WEB DEVELOPER" (above the line) down to here.
+
+Paste into Claude.ai
+
+Add: **"BUILD THE WEBSITE NOW"**
+
+Done! You'll get production-ready HTML in 5 minutes.
+
+The website will look beautiful, load fast, animate smoothly, and convert visitors.
+
+**Let's build something unforgettable! 🚀**

@@ -1,0 +1,1599 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuvia Properties & Developments | Building Trust Across Borders</title>
+    <meta name="description"
+        content="Nuvia Properties & Developments - Professional property solutions for the diaspora. Property development, student housing, and property management in Zimbabwe.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+
+    <style>
+        :root {
+            --white: #ffffff;
+            --navy: #0f2940;
+            --navy-light: #1a3a52;
+            --gold: #c9a227;
+            --gold-light: #d4af37;
+            --gold-dark: #a88b1f;
+            --charcoal: #1a1a1a;
+            --gray-100: #f8f9fa;
+            --gray-200: #e9ecef;
+            --gray-300: #dee2e6;
+            --gray-600: #6c757d;
+            --cream: #faf9f7;
+
+            --font-heading: 'Playfair Display', Georgia, serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+            --header-height: 80px;
+            --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+            --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--charcoal);
+            background: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Noise Texture Overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.02;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 clamp(20px, 5vw, 60px);
+        }
+
+        /* ===================== HEADER ===================== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: all 0.4s var(--ease-out-expo);
+        }
+
+        .header.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        .header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo img {
+            height: 65px;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover img {
+            transform: scale(1.03);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--gray-600);
+            letter-spacing: 0.3px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--navy);
+        }
+
+        .nav-cta {
+            background: var(--navy) !important;
+            color: var(--white) !important;
+            padding: 12px 28px !important;
+            border-radius: 6px;
+            font-weight: 600 !important;
+            transition: all 0.4s var(--ease-out-expo) !important;
+            box-shadow: 0 2px 8px rgba(15, 41, 64, 0.15);
+        }
+
+        .nav-cta:hover {
+            background: var(--gold) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(201, 162, 39, 0.3);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--navy);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: var(--white);
+                flex-direction: column;
+                justify-content: center;
+                gap: 40px;
+                transition: right 0.5s var(--ease-out-expo);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 18px;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        /* ===================== HERO ===================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 140px 20px 100px;
+            background: var(--navy);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201, 162, 39, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(26, 58, 82, 0.5) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(to top, var(--white) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 1;
+        }
+
+        .hero-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+            opacity: 0;
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(42px, 8vw, 80px);
+            font-weight: 600;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 .word {
+            display: inline-block;
+            overflow: hidden;
+            vertical-align: top;
+            margin-right: 0.2em;
+        }
+
+        .hero h1 .word-inner {
+            display: inline-block;
+            transform: translateY(100%);
+        }
+
+        .hero h1 .highlight {
+            color: var(--gold-light);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(16px, 2vw, 20px);
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 550px;
+            margin: 0 auto 48px;
+            line-height: 1.7;
+            opacity: 0;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.3px;
+            transition: all 0.4s var(--ease-out-expo);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--navy);
+            box-shadow: 0 4px 20px rgba(201, 162, 39, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(201, 162, 39, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .btn svg {
+            width: 18px;
+            height: 18px;
+            stroke-width: 2;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            z-index: 2;
+            opacity: 0;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), transparent);
+            position: relative;
+        }
+
+        .scroll-line::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: var(--gold);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+
+            0%,
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            50% {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+        }
+
+        /* ===================== STORY ===================== */
+        .story-section {
+            padding: 120px 0;
+            background: var(--white);
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .story-left,
+        .story-right {
+            opacity: 0;
+        }
+
+        .story-label {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .story-title {
+            font-family: var(--font-heading);
+            font-size: clamp(32px, 4vw, 44px);
+            color: var(--navy);
+            line-height: 1.2;
+            margin-bottom: 24px;
+            letter-spacing: -0.5px;
+        }
+
+        .founder-card {
+            background: transparent;
+            padding: 48px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .founder-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+        }
+
+        .founder-photo {
+            width: 260px;
+            height: auto;
+            margin: 0 auto 24px;
+            position: relative;
+        }
+
+        .founder-photo img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            filter: grayscale(10%);
+            transition: filter 0.4s ease;
+        }
+
+        .founder-card:hover .founder-photo img {
+            filter: grayscale(0%);
+        }
+
+        .founder-name {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+
+        .founder-title {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--gray-600);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .founder-quote {
+            font-size: 17px;
+            color: var(--charcoal);
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        .story-content p {
+            font-size: 17px;
+            line-height: 1.9;
+            color: var(--charcoal);
+            margin-bottom: 24px;
+        }
+
+        .story-signature {
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .story-signature .name {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            color: var(--navy);
+        }
+
+        .story-signature .title {
+            font-size: 14px;
+            color: var(--gray-600);
+        }
+
+        @media (max-width: 768px) {
+            .story-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+        }
+
+        /* ===================== SERVICES ===================== */
+        .services-section {
+            padding: 120px 0;
+            background: var(--cream);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 72px;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(32px, 4vw, 48px);
+            color: var(--navy);
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--gray-600);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 48px 36px;
+            border: 1px solid var(--gray-200);
+            transition: all 0.5s var(--ease-out-expo);
+            opacity: 0;
+            transform: translateY(40px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s var(--ease-out-expo);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.08);
+            border-color: transparent;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon-wrap {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gray-100) 0%, var(--white) 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 28px;
+            transition: all 0.4s var(--ease-out-expo);
+        }
+
+        .service-card:hover .service-icon-wrap {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+        }
+
+        .service-icon-wrap svg {
+            width: 28px;
+            height: 28px;
+            color: var(--navy);
+            stroke-width: 1.5;
+            transition: color 0.4s ease;
+        }
+
+        .service-card:hover .service-icon-wrap svg {
+            color: var(--white);
+        }
+
+        .service-card h3 {
+            font-family: var(--font-heading);
+            font-size: 22px;
+            color: var(--navy);
+            margin-bottom: 12px;
+        }
+
+        .service-card .description {
+            font-size: 15px;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 28px;
+        }
+
+        .service-features {
+            margin-bottom: 32px;
+        }
+
+        .service-features li {
+            font-size: 14px;
+            color: var(--charcoal);
+            padding: 10px 0;
+            padding-left: 28px;
+            position: relative;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .service-features li:last-child {
+            border-bottom: none;
+        }
+
+        .service-features li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            background: var(--gray-100);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-features li::after {
+            content: '✓';
+            position: absolute;
+            left: 3px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 10px;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--navy);
+            transition: all 0.3s ease;
+        }
+
+        .service-link svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-link:hover {
+            color: var(--gold);
+        }
+
+        .service-link:hover svg {
+            transform: translateX(4px);
+        }
+
+        @media (max-width: 992px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+
+        /* ===================== WHY NUVIA ===================== */
+        .why-section {
+            padding: 120px 0;
+            background: var(--white);
+        }
+
+        .why-statements {
+            text-align: center;
+            margin-bottom: 80px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .why-statement {
+            font-family: var(--font-heading);
+            font-size: clamp(24px, 3.5vw, 36px);
+            color: var(--navy);
+            line-height: 1.5;
+            margin-bottom: 24px;
+            opacity: 0;
+        }
+
+        .why-statement .key-word {
+            color: var(--navy);
+            transition: all 0.6s var(--ease-out-expo);
+            position: relative;
+        }
+
+        .why-statement .key-word.active {
+            color: var(--gold);
+        }
+
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .reason-item {
+            display: flex;
+            gap: 24px;
+            padding: 32px;
+            background: var(--gray-100);
+            border-radius: 16px;
+            transition: all 0.4s var(--ease-out-expo);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .reason-item:hover {
+            background: var(--white);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+        }
+
+        .reason-icon-wrap {
+            width: 56px;
+            height: 56px;
+            min-width: 56px;
+            background: var(--white);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s var(--ease-out-expo);
+        }
+
+        .reason-item:hover .reason-icon-wrap {
+            background: var(--gold);
+        }
+
+        .reason-icon-wrap svg {
+            width: 24px;
+            height: 24px;
+            color: var(--gold);
+            stroke-width: 1.5;
+            transition: color 0.4s ease;
+        }
+
+        .reason-item:hover .reason-icon-wrap svg {
+            color: var(--white);
+        }
+
+        .reason-text h4 {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .reason-text p {
+            font-size: 14px;
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .reasons-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Mission Block */
+        .mission-block {
+            background: var(--navy);
+            padding: 100px 40px;
+            margin-top: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mission-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at 30% 50%, rgba(201, 162, 39, 0.1) 0%, transparent 60%);
+        }
+
+        .mission-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .mission-content p {
+            font-family: var(--font-heading);
+            font-size: clamp(24px, 3vw, 32px);
+            color: var(--white);
+            line-height: 1.6;
+            opacity: 0;
+        }
+
+        .mission-content .highlight {
+            color: var(--gold-light);
+        }
+
+        /* ===================== CONTACT ===================== */
+        .contact-section {
+            padding: 120px 0;
+            background: var(--cream);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 48px 32px;
+            text-align: center;
+            border: 1px solid var(--gray-200);
+            transition: all 0.4s var(--ease-out-expo);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+            border-color: var(--gold);
+        }
+
+        .contact-icon-wrap {
+            width: 72px;
+            height: 72px;
+            background: var(--gray-100);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            transition: all 0.4s var(--ease-out-expo);
+        }
+
+        .contact-card:hover .contact-icon-wrap {
+            background: var(--gold);
+        }
+
+        .contact-icon-wrap svg {
+            width: 28px;
+            height: 28px;
+            color: var(--navy);
+            stroke-width: 1.5;
+            transition: color 0.4s ease;
+        }
+
+        .contact-card:hover .contact-icon-wrap svg {
+            color: var(--white);
+        }
+
+        .contact-card h3 {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .contact-card .contact-info {
+            font-size: 14px;
+            color: var(--gray-600);
+            margin-bottom: 24px;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background: var(--navy);
+            color: var(--white);
+            padding: 14px 28px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            transition: all 0.4s var(--ease-out-expo);
+        }
+
+        .contact-btn:hover {
+            background: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                max-width: 360px;
+            }
+        }
+
+        /* ===================== FOOTER ===================== */
+        .footer {
+            background: var(--navy);
+            color: var(--white);
+            padding: 80px 0 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand .logo {
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .footer-brand .logo img {
+            height: 80px;
+            width: auto;
+        }
+
+        .footer-brand p {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.8;
+            max-width: 320px;
+            margin-top: 0;
+        }
+
+        .footer-links h4 {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .footer-links ul {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .footer-links a {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 32px;
+            text-align: center;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .footer-brand p {
+                margin: 20px auto 0;
+            }
+        }
+
+        /* ===================== STICKY CTA ===================== */
+        .sticky-cta {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 16px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 8px 32px rgba(201, 162, 39, 0.4);
+            transition: all 0.4s var(--ease-out-expo);
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sticky-cta svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .sticky-cta:hover {
+            background: var(--gold-light);
+            transform: translateY(-3px);
+            box-shadow: 0 16px 48px rgba(201, 162, 39, 0.5);
+        }
+
+        .sticky-cta.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .sticky-cta {
+                left: 20px;
+                right: 20px;
+                bottom: 20px;
+                justify-content: center;
+            }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header" id="header">
+        <div class="container">
+            <a href="#hero" class="logo">
+                <img src="assets/Logo/Nuvia_nobackground.png" alt="Nuvia Properties & Developments">
+            </a>
+            <nav class="nav-links" id="navLinks">
+                <a href="#story">Our Story</a>
+                <a href="#services">Services</a>
+                <a href="#why-nuvia">Why Us</a>
+                <a href="#contact">Contact</a>
+                <a href="#contact" class="nav-cta">Get Started</a>
+            </nav>
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </header>
+
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>
+                <span class="word"><span class="word-inner">The</span></span>
+                <span class="word"><span class="word-inner">Diaspora</span></span>
+                <span class="word"><span class="word-inner">Deserves</span></span>
+                <span class="word"><span class="word-inner highlight">Better.</span></span>
+            </h1>
+            <p class="hero-subtitle">Professional property development, student housing, and management services built
+                on transparency, integrity, and results.</p>
+            <div class="hero-cta-group">
+                <a href="#services" class="btn btn-primary">
+                    Explore Services
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" />
+                    </svg>
+                </a>
+                <a href="#story" class="btn btn-secondary">Our Story</a>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="story-section" id="story">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-left">
+                    <div class="founder-card">
+                        <div class="founder-photo">
+                            <img src="assets/ceo-headshot.png" alt="Munashe Kurwa - CEO of Nuvia Properties">
+                        </div>
+                        <h3 class="founder-name">Munashe Kurwa</h3>
+                        <p class="founder-title">Founder & CEO</p>
+                        <p class="founder-quote">"At Nuvia we don't just build properties. We build trust, long-term
+                            value and peace of mind."</p>
+                    </div>
+                </div>
+                <div class="story-right">
+                    <span class="story-label">Our Story</span>
+                    <h2 class="story-title">Built on responsibility, resilience and commitment.</h2>
+                    <div class="story-content">
+                        <p>As a first-born daughter raised between two worlds—home in Zimbabwe and opportunity abroad—I
+                            understand the weight of ambition carried by the diaspora. The desire to build, invest, and
+                            create impact back home is strong, but it often comes with hesitation: Who can you trust?
+                            Who will act with integrity? Who will deliver to the same standard you would if you were
+                            there yourself?</p>
+                        <p>Nuvia exists to answer those questions with certainty.</p>
+                        <p>We were created to be a dependable, professional bridge between the diaspora and
+                            home—providing trusted property development, construction and student accommodation services
+                            rooted in transparency, accountability and excellence. Every project is handled with care,
+                            clear communication and the same level of responsibility we would demand for our own
+                            families.</p>
+                    </div>
+                    <div class="story-signature">
+                        <p class="name">Munashe Kurwa</p>
+                        <p class="title">Founder & CEO, Nuvia Properties</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-section" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">What We Do</span>
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-subtitle">Three core pillars built on trust and transparency.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon-wrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+                            <path d="M2 12h20" />
+                        </svg>
+                    </div>
+                    <h3>Diaspora Development</h3>
+                    <p class="description">Build your dream property from anywhere with professional support,
+                        transparent costing, and weekly photo updates.</p>
+                    <ul class="service-features">
+                        <li>Land advisory and acquisition</li>
+                        <li>Design planning and consultation</li>
+                        <li>Transparent cost breakdown</li>
+                        <li>Weekly photo updates</li>
+                        <li>Completion guarantee</li>
+                    </ul>
+                    <a href="#contact" class="service-link">Learn More <svg xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M5 12h14" />
+                            <path d="m12 5 7 7-7 7" />
+                        </svg></a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon-wrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                            <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                        </svg>
+                    </div>
+                    <h3>Student Housing</h3>
+                    <p class="description">Safe, stylish, modern accommodations designed with dignity and comfort where
+                        young people can thrive.</p>
+                    <ul class="service-features">
+                        <li>Modern facilities</li>
+                        <li>Safety and security systems</li>
+                        <li>Community spaces</li>
+                        <li>Fair, transparent pricing</li>
+                        <li>Student-focused amenities</li>
+                    </ul>
+                    <a href="#contact" class="service-link">Learn More <svg xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M5 12h14" />
+                            <path d="m12 5 7 7-7 7" />
+                        </svg></a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon-wrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="m21 2-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0 3 3L22 7l-3-3m-3.5 3.5L19 4" />
+                        </svg>
+                    </div>
+                    <h3>Property Management</h3>
+                    <p class="description">Professional lettings, tenant vetting, rent collection, and maintenance. Full
+                        portfolio management.</p>
+                    <ul class="service-features">
+                        <li>Tenant sourcing and vetting</li>
+                        <li>Lease management</li>
+                        <li>Monthly rent collection</li>
+                        <li>Maintenance coordination</li>
+                        <li>Transparent reporting</li>
+                    </ul>
+                    <a href="#contact" class="service-link">Learn More <svg xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M5 12h14" />
+                            <path d="m12 5 7 7-7 7" />
+                        </svg></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-section" id="why-nuvia">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Why Choose Us</span>
+                <h2 class="section-title">Why Nuvia?</h2>
+            </div>
+            <div class="why-statements">
+                <p class="why-statement">We don't just build houses... we build <span class="key-word">TRUST</span></p>
+                <p class="why-statement">We don't manage projects... we manage <span class="key-word">FUTURES</span></p>
+                <p class="why-statement">We don't house students... we empower <span class="key-word">THEM</span></p>
+            </div>
+            <div class="reasons-grid">
+                <div class="reason-item">
+                    <div class="reason-icon-wrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                        </svg>
+                    </div>
+                    <div class="reason-text">
+                        <h4>Transparent Communication</h4>
+                        <p>Real-time updates, honest reporting, documented processes.</p>
+                    </div>
+                </div>
+                <div class="reason-item">
+                    <div class="reason-icon-wrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+                            <path d="M19 3v4" />
+                            <path d="M21 5h-4" />
+                        </svg>
+                    </div>
+                    <div class="reason-text">
+                        <h4>Female-Led Innovation</h4>
+                        <p>Young CEO bringing fresh perspective to traditional industry.</p>
+                    </div>
+                </div>
+                <div class="reason-item">
+                    <div class="reason-icon-wrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <polyline points="12 6 12 12 16 14" />
+                        </svg>
+                    </div>
+                    <div class="reason-text">
+                        <h4>Time-Bound Projects</h4>
+                        <p>Structured timelines, professional contracts, on-schedule delivery.</p>
+                    </div>
+                </div>
+                <div class="reason-item">
+                    <div class="reason-icon-wrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="7" height="7" x="3" y="3" rx="1" />
+                            <rect width="7" height="7" x="14" y="3" rx="1" />
+                            <rect width="7" height="7" x="14" y="14" rx="1" />
+                            <rect width="7" height="7" x="3" y="14" rx="1" />
+                        </svg>
+                    </div>
+                    <div class="reason-text">
+                        <h4>One-Stop Solution</h4>
+                        <p>Diaspora development + student housing + property management.</p>
+                    </div>
+                </div>
+                <div class="reason-item">
+                    <div class="reason-icon-wrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
+                            <path d="m9 12 2 2 4-4" />
+                        </svg>
+                    </div>
+                    <div class="reason-text">
+                        <h4>Genuine Accountability</h4>
+                        <p>We treat every project like we own it ourselves.</p>
+                    </div>
+                </div>
+                <div class="reason-item">
+                    <div class="reason-icon-wrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+                        </svg>
+                    </div>
+                    <div class="reason-text">
+                        <h4>Family-First Approach</h4>
+                        <p>Your vision is your legacy; we protect it with excellence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mission-block">
+            <div class="mission-content">
+                <p>At Nuvia, we don't just build properties. We build <span class="highlight">trust</span>. We build
+                    <span class="highlight">futures</span>. We build stories that last. This is why families choose us.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Get in Touch</span>
+                <h2 class="section-title">Ready to Build Your Story?</h2>
+                <p class="section-subtitle">Let's talk about your vision. We'll handle the rest.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon-wrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                        </svg>
+                    </div>
+                    <h3>Call Us</h3>
+                    <p class="contact-info">+263 XXX XXX XXX</p>
+                    <a href="tel:+263XXXXXXXXX" class="contact-btn">Tap to Call</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon-wrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="20" height="16" x="2" y="4" rx="2" />
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                        </svg>
+                    </div>
+                    <h3>Email Us</h3>
+                    <p class="contact-info">info@nuviaproperties.co.zw</p>
+                    <a href="mailto:info@nuviaproperties.co.zw" class="contact-btn">Send Email</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon-wrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                        </svg>
+                    </div>
+                    <h3>WhatsApp</h3>
+                    <p class="contact-info">Message us directly</p>
+                    <a href="https://wa.me/263XXXXXXXXX" target="_blank" class="contact-btn">Open Chat</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#hero" class="logo">
+                        <img src="assets/Logo/Nuvia_nobackground.png" alt="Nuvia Properties & Developments">
+                    </a>
+                    <p>Building trust, long-term value, and peace of mind for the diaspora and beyond. Professional
+                        property solutions in Zimbabwe.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#story">Our Story</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#why-nuvia">Why Nuvia</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Diaspora Development</a></li>
+                        <li><a href="#services">Student Housing</a></li>
+                        <li><a href="#services">Property Management</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Nuvia Properties & Developments. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#contact" class="sticky-cta" id="stickyCta">
+        Let's Build Together
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14" />
+            <path d="m12 5 7 7-7 7" />
+        </svg>
+    </a>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+        // Mobile Nav
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Header scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Hero animations
+        const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+        tl.to('.hero-label', { opacity: 1, y: 0, duration: 0.8, delay: 0.2 })
+            .to('.hero h1 .word-inner', { y: 0, duration: 1.2, stagger: 0.08 }, '-=0.4')
+            .to('.hero-subtitle', { opacity: 1, y: 0, duration: 0.8 }, '-=0.6')
+            .to('.hero-cta-group', { opacity: 1, y: 0, duration: 0.8 }, '-=0.4')
+            .to('.scroll-indicator', { opacity: 1, duration: 1 }, '-=0.2');
+
+        // Story parallax
+        gsap.fromTo('.story-left', { opacity: 0, x: -60 }, {
+            opacity: 1, x: 0, duration: 1, ease: 'power3.out',
+            scrollTrigger: { trigger: '.story-section', start: 'top 70%' }
+        });
+        gsap.fromTo('.story-right', { opacity: 0, x: 60 }, {
+            opacity: 1, x: 0, duration: 1, ease: 'power3.out', delay: 0.2,
+            scrollTrigger: { trigger: '.story-section', start: 'top 70%' }
+        });
+
+        // Service cards
+        gsap.fromTo('.service-card', { opacity: 0, y: 60 }, {
+            opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out',
+            scrollTrigger: { trigger: '.services-grid', start: 'top 75%' }
+        });
+
+        // Why statements
+        gsap.fromTo('.why-statement', { opacity: 0, y: 30 }, {
+            opacity: 1, y: 0, duration: 0.7, stagger: 0.2, ease: 'power3.out',
+            scrollTrigger: { trigger: '.why-statements', start: 'top 70%' }
+        });
+
+        // Key words gold
+        document.querySelectorAll('.key-word').forEach(word => {
+            ScrollTrigger.create({
+                trigger: word,
+                start: 'top 60%',
+                onEnter: () => word.classList.add('active')
+            });
+        });
+
+        // Reason items
+        gsap.fromTo('.reason-item', { opacity: 0, y: 30 }, {
+            opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out',
+            scrollTrigger: { trigger: '.reasons-grid', start: 'top 75%' }
+        });
+
+        // Mission
+        gsap.fromTo('.mission-content p', { opacity: 0, y: 30 }, {
+            opacity: 1, y: 0, duration: 1, ease: 'power3.out',
+            scrollTrigger: { trigger: '.mission-block', start: 'top 70%' }
+        });
+
+        // Contact cards
+        gsap.fromTo('.contact-card', { opacity: 0, y: 40 }, {
+            opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out',
+            scrollTrigger: { trigger: '.contact-grid', start: 'top 75%' }
+        });
+
+        // Sticky CTA
+        const stickyCta = document.getElementById('stickyCta');
+        ScrollTrigger.create({
+            trigger: '.story-section',
+            start: 'top center',
+            onEnter: () => stickyCta.classList.add('visible'),
+            onLeaveBack: () => stickyCta.classList.remove('visible')
+        });
+        ScrollTrigger.create({
+            trigger: '.contact-section',
+            start: 'top 80%',
+            onEnter: () => stickyCta.classList.remove('visible'),
+            onLeaveBack: () => stickyCta.classList.add('visible')
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    gsap.to(window, {
+                        duration: 1.2,
+                        scrollTo: { y: target, offsetY: 80 },
+                        ease: 'power3.inOut'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
