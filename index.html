@@ -204,9 +204,7 @@
             /* filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15)); REMOVED for seamless look */
         }
 
-        .header.scrolled .logo img {
-            /* filter: drop-shadow(0 2px 10px rgba(15, 41, 64, 0.15)); REMOVED for seamless look */
-        }
+
 
         @media (max-width: 768px) {
             .logo img {
@@ -1084,13 +1082,36 @@
         }
 
         .footer-brand .logo {
-            height: auto;
-            margin-bottom: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 32px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 12px;
+            margin-bottom: 32px;
+            transition: all 0.4s var(--ease-out-expo);
+        }
+
+        .footer-brand .logo:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(201, 162, 39, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .footer-brand .logo img {
-            height: 80px;
+            height: clamp(80px, 10vw, 110px);
             width: auto;
+            /* enhance contrast slightly inside the glass */
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+            transition: transform 0.3s ease;
+        }
+
+        .footer-brand .logo:hover img {
+            transform: scale(1.02);
         }
 
         .footer-brand p {
@@ -1137,8 +1158,19 @@
         @media (max-width: 768px) {
             .footer-grid {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 48px;
                 text-align: center;
+            }
+
+            .footer-brand {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-brand .logo {
+                margin-left: auto;
+                margin-right: auto;
             }
 
             .footer-brand p {
