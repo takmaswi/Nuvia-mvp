@@ -312,20 +312,23 @@
             justify-content: center;
             text-align: center;
             padding: 140px 20px 100px;
-            background: var(--navy);
+            background-color: var(--navy);
+            background-image: url('assets/nuvia-brick-wall.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             position: relative;
             overflow: hidden;
+            z-index: 1;
         }
 
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(ellipse at 50% 0%, rgba(201, 162, 39, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 80%, rgba(26, 58, 82, 0.5) 0%, transparent 40%);
+            inset: 0;
+            background: linear-gradient(135deg, rgba(15, 41, 64, 0.96) 0%, rgba(15, 41, 64, 0.88) 100%);
+            mix-blend-mode: multiply;
+            z-index: -1;
             pointer-events: none;
         }
 
@@ -335,24 +338,15 @@
             bottom: 0;
             left: 0;
             right: 0;
-            height: 300px;
-            background: linear-gradient(to top,
-                    var(--white) 0%,
-                    rgba(255, 255, 255, 0.95) 10%,
-                    rgba(255, 255, 255, 0.8) 20%,
-                    rgba(255, 255, 255, 0.6) 30%,
-                    rgba(255, 255, 255, 0.4) 40%,
-                    rgba(255, 255, 255, 0.2) 50%,
-                    rgba(255, 255, 255, 0.1) 60%,
-                    rgba(255, 255, 255, 0.05) 70%,
-                    rgba(255, 255, 255, 0.02) 80%,
-                    rgba(255, 255, 255, 0) 100%);
+            height: 180px;
+            background: linear-gradient(to bottom, transparent, var(--white));
             pointer-events: none;
+            z-index: 1;
         }
 
         .hero-content {
             max-width: 900px;
-            z-index: 1;
+            z-index: 2;
         }
 
         .hero-label {
